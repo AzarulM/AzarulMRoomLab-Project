@@ -26,17 +26,6 @@ public class Room {
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
 		x.setHealth(this.Health);
-
-		if (Health == 0)
-		{
-			System.out.println("You lost all your health.");
-			Runner.gameOff();
-		}
-		else if (Health > 150)
-		{
-			Health = 150;
-			System.out.println("You have max health.");
-		}
 	}
 
 	/**

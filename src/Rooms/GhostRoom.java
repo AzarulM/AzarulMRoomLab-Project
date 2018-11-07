@@ -1,6 +1,8 @@
 package Rooms;
 
+import Game.Runner;
 import People.Person;
+import Rooms.Room;
 
 
 public class GhostRoom extends Room
@@ -24,6 +26,12 @@ public class GhostRoom extends Room
         System.out.println("You have been attacked by a ghost.");
         Health = Health - 10;
         System.out.println("Your health is " + Health );
+
+        if (Health == 0)
+        {
+            System.out.println("You lost all your health.");
+            Runner.gameOff();
+        }
     }
 
 

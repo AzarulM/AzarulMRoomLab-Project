@@ -5,6 +5,7 @@ import Rooms.Room;
 import Rooms.EscapeRoom;
 import Rooms.GhostRoom;
 import Rooms.HealthRoom;
+import Rooms.DeathRoom;
 
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[5][5];
+		Room[][] building = new Room[9][9];
 		
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
@@ -32,11 +33,19 @@ public class Runner {
 
 		x = (int)(Math.random()*building.length);
 		y = (int)(Math.random()*building.length);
-		building[x][y] = new GhostRoom(x, y);
+		building[x][y] = new GhostRoom(x,y);
+
+
 
 		x = (int)(Math.random()*building.length);
 		y = (int)(Math.random()*building.length);
 		building[x][y] = new HealthRoom(x, y);
+
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		building[x][y] = new DeathRoom(x, y);
+
+
 
 
 		 
@@ -46,7 +55,7 @@ public class Runner {
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move? (Choose N, S, E, W)");
+			System.out.println("Where would you like to move now? (Choose N, S, E, W)");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -54,7 +63,7 @@ public class Runner {
 				
 			}
 			else {
-				System.out.println("Please choose a valid move.");
+				System.out.println("You are in front of a wall. Choose another direction..");
 			}
 			
 			
