@@ -21,7 +21,7 @@ public class EscapeRoom extends Room
 		occupant = x;
 		x.setxLoc(this.xLoc);
 		x.setyLoc(this.yLoc);
-		System.out.println("You have found the exit! You have left the house.");
+		System.out.println("You have found the exit! You are now free!.");
 		Runner.gameOff();
 	}
 	

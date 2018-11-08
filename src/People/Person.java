@@ -26,7 +26,7 @@ public class Person {
 		this.yLoc = yLoc;
 	}
 
-	public void setHealth(int Health) {this.Health = Health;}
+	public void setHealth(int Health) {this.Health = 100;}
 
 	public Person (String firstName, String familyName, int xLoc, int yLoc, int Health)
 	{

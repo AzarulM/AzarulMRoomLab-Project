@@ -2,7 +2,6 @@ package Rooms;
 
 import Game.Runner;
 import People.Person;
-import Rooms.Room;
 
 
 public class HealthRoom extends Room
@@ -10,7 +9,6 @@ public class HealthRoom extends Room
 
     public HealthRoom(int x, int y) {
         super(x, y);
-        this.Health = Health;
     }
 
     /**
@@ -23,8 +21,9 @@ public class HealthRoom extends Room
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
-        System.out.println("You have found health.");
+        x.setHealth(100);
         Health = 100;
+        System.out.println("You have found full health.");
         System.out.println("Your health is " + Health );
 
     }

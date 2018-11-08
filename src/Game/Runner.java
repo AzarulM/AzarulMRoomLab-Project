@@ -6,6 +6,7 @@ import Rooms.EscapeRoom;
 import Rooms.GhostRoom;
 import Rooms.HealthRoom;
 import Rooms.DeathRoom;
+import Rooms.SomeHealth;
 
 import java.util.Scanner;
 
@@ -45,12 +46,17 @@ public class Runner {
 		y = (int)(Math.random()*building.length);
 		building[x][y] = new DeathRoom(x, y);
 
+		x = (int)(Math.random()*building.length);
+		y = (int)(Math.random()*building.length);
+		building[x][y] = new SomeHealth(x, y);
+
+
 
 
 
 		 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0, 100);
+		Person player1 = new Person("FirstName", "FamilyName", 0,0,100);
 		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
@@ -60,7 +66,6 @@ public class Runner {
 			if(validMove(move, player1, building))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-				
 			}
 			else {
 				System.out.println("You are in front of a wall. Choose another direction..");
