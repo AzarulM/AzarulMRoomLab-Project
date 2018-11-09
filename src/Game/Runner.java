@@ -16,16 +16,12 @@ public class Runner {
 	
 	public static void main(String[] args)
 	{
-		Room[][] building = new Room[9][9];
-		
-		//Fill the building with normal rooms
-		for (int x = 0; x<building.length; x++)
-		{
-			for (int y = 0; y < building[x].length; y++)
-			{
-				building[x][y] = new Room(x,y);
-			}
-		}
+
+		System.out.println("You have enterd an unknown house. The door behind you closes and it is dark. You hear random noises. Try to find the exit without DYING!!!");
+		Scanner in = new Scanner(System.in);
+		Board layout = new Board(10,10);
+		Room[][] building = layout.Formation();
+		layout.PlaySpace();
 		
 		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
@@ -56,12 +52,17 @@ public class Runner {
 
 		 
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0,100);
+		System.out.println("What's your first name?");
+		String firstName = in.nextLine();
+		System.out.println("Last name?");
+		String lastName = in.nextLine();
+		Person player1 = new Person(firstName, lastName, 0,0, 100);
+		System.out.println("Welcome " + firstName + " " + lastName);
+		System.out.println("Now choose a direction");
 		building[0][0].enterRoom(player1);
-		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
-			System.out.println("Where would you like to move now? (Choose N, S, E, W)");
+			System.out.println("Where would you like to move now? (Choose W to move foward, Choose S to move back, Choose A to move left, Choose D to move right. )");
 			String move = in.nextLine();
 			if(validMove(move, player1, building))
 			{
@@ -70,8 +71,8 @@ public class Runner {
 			else {
 				System.out.println("You are in front of a wall. Choose another direction..");
 			}
-			
-			
+
+
 		}
 		in.close();
 	}
@@ -87,7 +88,7 @@ public class Runner {
 	{
 		move = move.toLowerCase().trim();
 		switch (move) {
-			case "n":
+			case "w":
 				if (p.getxLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -98,7 +99,7 @@ public class Runner {
 				{
 					return false;
 				}
-			case "e":
+			case "d":
 				if (p.getyLoc()< map[p.getyLoc()].length -1)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
@@ -122,7 +123,7 @@ public class Runner {
 					return false;
 				}
 
-			case "w":
+			case "a":
 				if (p.getyLoc() > 0)
 				{
 					map[p.getxLoc()][p.getyLoc()].leaveRoom(p);
